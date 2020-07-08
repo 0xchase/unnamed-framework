@@ -17,6 +17,16 @@ A WIP framework for learning malware development and detection.
 ## Core
  - Contains some key functionality, local cmdline interface, networked cmdline interface
  - Contains an array of plugin objects
+ 
+### Process Manipulation
+ - Get basic process information
+ - Implement various memory scanning techniques, rewrite strings in memory
+ - Suspend and resume process execution
+ - Implement various process injection techniques: github.com/SafeBreach-Labs/pinjectra and the corresponding whitepaper. Detailed comments.
+ - Implement various process hiding techniques
+ - Visualize heap memory
+ - Monitor system calls
+ - Build hooks for various system calls, can enable these hooks
 
 ## Plugins
  - Plugins can be written in C, C++, Python, Rust, Powershell

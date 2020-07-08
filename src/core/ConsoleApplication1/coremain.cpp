@@ -8,15 +8,23 @@
 PCSTR cac_ip = "192.168.1.1";
 Process processes[1024];
 
+void ScanProcesses(void);
+
 // Initialize the core module
 int main()
 {
     std::cout << "Hello World!\n";
     ScanProcesses();
-    
+
+    for (auto process : processes) {
+        if (process.name == "notepad.exe") {
+            std::cout << "Found notepad (pid " << process.pid << ")\n";
+            process.scanStrings();
+        }
+    }
 }
 
-int ScanProcesses(void)
+void ScanProcesses(void)
 {
 
     DWORD aProcesses[1024];
@@ -24,17 +32,20 @@ int ScanProcesses(void)
     DWORD cProcesses;
     unsigned int i;
 
+    Process temp_processes[1024];
+
     if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
-        return 1;
+        return;
 
     aProcesses[0];
     cProcesses = cbNeeded / sizeof(DWORD);
 
     for (i = 0; i < cProcesses; i++)
     {
-        //processes[i] = new Process();
-        std::cout << "Process ID: " << aProcesses[i] << "\n";
+        temp_processes[i] = Process(aProcesses[i]);
     }
 
-    return 0;
+    std::copy(temp_processes, temp_processes + sizeof(temp_processes) / sizeof(temp_processes[0]), processes);
+
+    return;
 }
