@@ -1,51 +1,33 @@
-
 #include <iostream>
 #include <windows.h>
-#include <psapi.h>
 #include "Process.h"
+#include "Memory.h"
+#include "AntiDebug.h"
 #include "utils.h"
+#include "Info.h"
 
 PCSTR cac_ip = "192.168.1.1";
-Process processes[1024];
 
-void ScanProcesses(void);
+int main() {
+    std::cout << "Starting main\n";
 
-// Initialize the core module
-int main()
-{
-    std::cout << "Hello World!\n";
-    ScanProcesses();
+    Memory memory = Memory();
+    //Info info = Info();
+    AntiDebug antidebug = AntiDebug(false);
 
-    for (auto process : processes) {
-        if (process.name == "notepad.exe") {
-            std::cout << "Found notepad (pid " << process.pid << ")\n";
-            process.scanStrings();
-        }
-    }
-}
+    memory.GetDebugPrivileges();
+    Process notepad = memory.GetProcessByName("notepad.exe");
 
-void ScanProcesses(void)
-{
+    std::cout << "Inejcting DLL\n";
+    notepad.InjectDll();
+    
 
-    DWORD aProcesses[1024];
-    DWORD cbNeeded;
-    DWORD cProcesses;
-    unsigned int i;
 
-    Process temp_processes[1024];
+    if (antidebug.CheckIsDebuggerPresent())
+        std::cout << "FOUND DEBUGGER\n";
+    else
+        std::cout << "No debugger found\n";
 
-    if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
-        return;
 
-    aProcesses[0];
-    cProcesses = cbNeeded / sizeof(DWORD);
-
-    for (i = 0; i < cProcesses; i++)
-    {
-        temp_processes[i] = Process(aProcesses[i]);
-    }
-
-    std::copy(temp_processes, temp_processes + sizeof(temp_processes) / sizeof(temp_processes[0]), processes);
-
-    return;
+    exit(0);
 }

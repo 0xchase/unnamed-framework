@@ -1,2 +1,4 @@
-﻿  Process.cpp
+﻿  coremain.cpp
+C:\Users\chase\Desktop\malware-framework\src\core\ConsoleApplication1\coremain.cpp(43,56): warning C4305: 'argument': truncation from '__int64' to 'int'
+C:\Users\chase\Desktop\malware-framework\src\core\ConsoleApplication1\coremain.cpp(43,43): warning C4309: 'argument': truncation of constant value
   ConsoleApplication1.vcxproj -> C:\Users\chase\Desktop\malware-framework\src\core\Debug\ConsoleApplication1.exe

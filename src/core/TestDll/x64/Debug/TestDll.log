@@ -1,0 +1,6 @@
+﻿  pch.cpp
+  dllmain.cpp
+  TestDll.cpp
+  Generating Code...
+     Creating library C:\Users\chase\Desktop\malware-framework\src\core\x64\Debug\TESTDLL.lib and object C:\Users\chase\Desktop\malware-framework\src\core\x64\Debug\TESTDLL.exp
+  TestDll.vcxproj -> C:\Users\chase\Desktop\malware-framework\src\core\x64\Debug\TESTDLL.dll
