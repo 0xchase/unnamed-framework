@@ -1,6 +1,12 @@
 #pragma once
 #include <windows.h>
 #include <string>
+#include "DLL.h"
+
+// Definitions related to process injection
+#define INJECT_CREATEREMOTETHREAD 0
+#define INJECT_NTCREATETHREAD 1
+#define INJECT_RTLCREATEUSERTHREAD 2
 
 class Process
 {
@@ -27,8 +33,10 @@ public:
     std::string ReadText(long long address);
     std::string ReadPointerText(HANDLE processHandle, int startAddress, int offsets[], int offsetCount);
 
-	bool InjectDllNewThread();
-	bool InjectDll();
+	bool InjectDLL(DLL payload);
+	bool InjectDLL(DLL payload, int injectionType);
 
 private:
+	bool InjectDll_CreateRemoteThread(DLL payload);
+	bool InjectDll_NtCreateThreadEx(DLL payload);
 };

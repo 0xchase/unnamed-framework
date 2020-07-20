@@ -39,6 +39,9 @@
     <ClCompile Include="Injector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DLL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Process.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AntiDebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DLL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

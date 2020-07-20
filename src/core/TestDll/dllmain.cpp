@@ -2,7 +2,11 @@
 #include "pch.h"
 #include <iostream>
 #include <Windows.h>
-#include <shellapi.h>
+
+
+DLLEXPORT void mess() {
+    MessageBoxA(NULL, "HELLO THERE", "From Notepad", NULL);
+}
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -17,9 +21,6 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     case DLL_PROCESS_DETACH:
         break;
     }
-
-    std::cout << "Calling DLL main\n";
-    ShellExecute(NULL, L"notepad.exe", NULL, NULL, NULL, SW_SHOW);
 
     return TRUE;
 }

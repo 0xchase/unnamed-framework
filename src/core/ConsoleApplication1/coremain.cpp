@@ -5,6 +5,7 @@
 #include "AntiDebug.h"
 #include "utils.h"
 #include "Info.h"
+#include "DLL.h"
 
 PCSTR cac_ip = "192.168.1.1";
 
@@ -14,14 +15,12 @@ int main() {
     Memory memory = Memory();
     //Info info = Info();
     AntiDebug antidebug = AntiDebug(false);
-
-    memory.GetDebugPrivileges();
     Process notepad = memory.GetProcessByName("notepad.exe");
 
-    std::cout << "Inejcting DLL\n";
-    notepad.InjectDll();
-    
+    DLL payload = DLL("PATH TO DLL");
 
+    std::cout << "Inejcting DLL\n";
+    notepad.InjectDLL(payload);
 
     if (antidebug.CheckIsDebuggerPresent())
         std::cout << "FOUND DEBUGGER\n";

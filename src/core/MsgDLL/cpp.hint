@@ -1,0 +1,2 @@
+#define MSGDLL_API __declspec(dllexport)
+#define MSGDLL_API __declspec(dllimport)
