@@ -12,8 +12,10 @@ A WIP framework for post exploitation, malware research, learning win32 and the 
 ## Future projects/research
 
 As the framework nears completion, it could be used for various projects like:
- - A challenge binary for 
- - Research which injection techniques are stealthy, evaluate different anti-virus products
+ - A challenge binary for anti-debugging techniques
+ - Build more advanced meterpreter
+ - Research which injection techniques are reliable and stealthy, evaluate against different anti-virus products
+ - Would be useful for game hacking
  
 ---
 
