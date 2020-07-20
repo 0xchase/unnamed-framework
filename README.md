@@ -2,6 +2,8 @@
 
 A WIP framework for post exploitation, malware research, learning win32 and the native api, and more.
 
+I have created a number of other `.md` files that propose various classes and functions.
+
 ## Current progress
 
  - Partial implementation of memory and process classes. Users can quickly search for processes, scan their memory, and do basic DLL injection. 
