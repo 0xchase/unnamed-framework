@@ -9,6 +9,27 @@ A WIP framework for post exploitation, malware research, learning win32 and the 
 
 ---
 
+## Example
+
+The goal of this framework is for people to be able to do things like below.
+
+```
+#include "unnamed-framework.h"
+
+int main() {
+    if (AntiDebug().CheckIsDebuggerPresent())
+        exit(0);
+	
+    Memory memory = Memory();
+    Process notepad = memory.GetProcessByName("notepad.exe");
+    notepad.InjectDLL(DLL("C:\MaliciousDll.dll"));
+	
+    exit(0);
+}
+```
+
+---
+
 ## Future projects/research
 
 As the framework nears completion, it could be used for various projects like:
