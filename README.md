@@ -38,7 +38,8 @@ As the framework nears completion, it could be used for various projects like:
  - A challenge binary for anti-debugging techniques
  - Build more advanced meterpreter
  - Research which injection techniques are reliable and stealthy, evaluate against different anti-virus products
- - Would be useful for game hacking
+ - Usable for advanced game hacking
+ - Extreme anti-debugging techniques (more in anti-debugging.md)
  
 ---
 
