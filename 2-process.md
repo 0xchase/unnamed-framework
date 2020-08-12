@@ -17,6 +17,7 @@ This class provides functions for creating, querying, and manipulating processes
 ### DLL injection
  - Implement all/most techniques
  - github.com/SafeBreach-Labs/pinjectra and the corresponding whitepaper
+ - This method: https://github.com/D4stiny/ThreadJect/blob/master/ThreadJect/main.cpp
  
 ### Shellcode injection
  - Write shellcode to memory
