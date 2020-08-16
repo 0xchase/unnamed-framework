@@ -22,6 +22,8 @@ This class provides functions for creating, querying, and manipulating processes
 ### Shellcode injection
  - Write shellcode to memory
  - Trampolines
+ - https://googleprojectzero.blogspot.com/2018/10/injecting-code-into-windows-protected.html
+ - Inject into kernel process
  
 ### Hooking
  - Todo
