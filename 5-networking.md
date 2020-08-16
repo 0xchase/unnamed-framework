@@ -16,3 +16,5 @@
 ### Other
  - Enumerate network shares
  - Enumerate SMB information
+ - Spread using CSV injection: http://georgemauer.net/2017/10/07/csv-injection.html
+ - Spread using email
