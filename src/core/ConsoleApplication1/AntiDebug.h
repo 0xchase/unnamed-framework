@@ -10,6 +10,8 @@ public:
 
 	static bool CheckIsDebuggerPresent();
 	static bool CheckIsRemoteDebuggerPresent();
+	//static bool CheckNtQueryInformationProcess();
+
 	static bool CheckProcessNames(Process* p);
 	static bool CheckWindowName();
 	static bool CheckHardwareDebugRegisters();

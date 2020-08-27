@@ -27,6 +27,8 @@ bool AntiDebug::CheckIsRemoteDebuggerPresent() {
 		return false;
 }
 
+// --------------------------------------------------------------
+
 // Add more process names
 bool AntiDebug::CheckProcessNames(Process* p) {
 	std::string names[2] = {"ollydbg", "WinDbg"};

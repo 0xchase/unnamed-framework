@@ -10,7 +10,7 @@ int main() {
     Memory::GetDebugPrivileges();
 
     notepad.InjectDLL(DLL("PATH TO DLL"));
-
+    
     if (AntiDebug::CheckIsDebuggerPresent())
         std::cout << "FOUND DEBUGGER\n";
     else

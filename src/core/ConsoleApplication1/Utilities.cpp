@@ -1,0 +1,1 @@
+// Add utility to get handle to function from ntdll to call

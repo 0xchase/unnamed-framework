@@ -16,17 +16,18 @@ I have created a number of other `.md` files that propose various classes and fu
 The goal of this framework is for people to be able to do things like below.
 
 ```
-#include "unnamed-framework.h"
+#include "framework.h"
 
 int main() {
-    if (AntiDebug().CheckIsDebuggerPresent())
-        exit(0);
-	
-    Memory memory = Memory();
-    Process notepad = memory.GetProcessByName("notepad.exe");
-    notepad.InjectDLL(DLL("C:\MaliciousDll.dll"));
-	
-    exit(0);
+    Process notepad = Memory::GetProcessByName("notepad.exe");
+    Memory::GetDebugPrivileges();
+
+    notepad.InjectDLL(DLL("PATH TO DLL"));
+
+    if (AntiDebug::CheckIsDebuggerPresent())
+        std::cout << "FOUND DEBUGGER\n";
+    else
+        std::cout << "No debugger found\n";
 }
 ```
 
