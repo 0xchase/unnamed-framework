@@ -6,12 +6,8 @@
 #include <iostream>
 #include <Psapi.h>
 
-AntiDebug::AntiDebug(bool exitImmediatley) {
-	this->exitImmediatley = exitImmediatley;
-}
-
 bool AntiDebug::CheckAll() {
-	return false;
+	return AntiDebug::CheckIsRemoteDebuggerPresent();
 }
 
 bool AntiDebug::CheckIsDebuggerPresent() {

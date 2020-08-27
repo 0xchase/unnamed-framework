@@ -1,21 +1,17 @@
 #pragma once
 #include "Process.h"
 #include <Psapi.h>
+#include <vector>
 
 class Memory
 {
 public:
-	Process processes[1024];
-
-	Memory();
-
-	void ScanProcesses(void);
-	BOOL GetDebugPrivileges(void);
-	Process GetProcessByName(std::string name);
-	Process GetProcessByPid(int pid);
+	static bool GetDebugPrivileges(void);
+	static std::vector<Process> GetProcesses(void);
+	static Process GetProcessByName(std::string name);
+	static Process GetProcessByPid(int pid);
 
 private:
-	BOOL SetPrivilege(HANDLE hToken, LPCTSTR lpszPrivilege, BOOL bEnablePrivilege);
-
+	static BOOL SetPrivilege(HANDLE hToken, LPCTSTR lpszPrivilege, BOOL bEnablePrivilege);
 };
 

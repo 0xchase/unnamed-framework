@@ -1,39 +1,30 @@
 #include "Memory.h"
 
-Memory::Memory() {
-    ScanProcesses();
-    GetDebugPrivileges();
-}
-
-void Memory::ScanProcesses(void) {
+std::vector<Process> Memory::GetProcesses(void) {
 
     DWORD aProcesses[1024];
     DWORD cbNeeded;
     DWORD cProcesses;
     unsigned int i;
 
-    Process temp_processes[1024];
-    //Process* temp_processes = new Process[1024];
+    std::vector<Process> processes;
 
     if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
-        return;
+        throw std::exception("In Memory::GetProcesses(void):\t Failed to enumerate processes");
 
     aProcesses[0];
     cProcesses = cbNeeded / sizeof(DWORD);
 
     for (i = 0; i < cProcesses; i++)
     {
-        temp_processes[i] = Process(aProcesses[i]);
-        //std::cout << "Found process " << temp_processes[i].pid << " " << temp_processes[i].IsElevated() << "\n";
+        processes.push_back(Process(aProcesses[i]));
     }
 
-    std::copy(temp_processes, temp_processes + sizeof(temp_processes) / sizeof(temp_processes[0]), processes);
-
-    return;
+    return processes;
 }
 
 Process Memory::GetProcessByName(std::string name) {
-    for (auto process : processes) {
+    for (auto process : GetProcesses()) {
         if (process.name == name) {
             return process;
         }
@@ -43,7 +34,7 @@ Process Memory::GetProcessByName(std::string name) {
 }
 
 Process Memory::GetProcessByPid(int pid) {
-    for (auto process : processes) {
+    for (auto process : GetProcesses()) {
         if (process.pid == pid) {
             return process;
         }
@@ -52,16 +43,16 @@ Process Memory::GetProcessByPid(int pid) {
     return NULL;
 }
 
-BOOL Memory::GetDebugPrivileges(void) {
+bool Memory::GetDebugPrivileges(void) {
     HANDLE hToken = NULL;
 
     if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &hToken))
-        return FALSE;
+        return false;
 
     if (!SetPrivilege(hToken, SE_DEBUG_NAME, TRUE))
-        return FALSE;
+        return false;
 
-    return TRUE;
+    return true;
 }
 
 BOOL Memory::SetPrivilege(HANDLE hToken, LPCTSTR lpszPrivilege, BOOL bEnablePrivilege) {
@@ -105,4 +96,3 @@ BOOL Memory::SetPrivilege(HANDLE hToken, LPCTSTR lpszPrivilege, BOOL bEnablePriv
 
     return TRUE;
 }
-

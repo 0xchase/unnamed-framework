@@ -153,16 +153,17 @@
     <ClCompile Include="coremain.cpp" />
     <ClCompile Include="Disk.cpp" />
     <ClCompile Include="DLL.cpp" />
-    <ClCompile Include="Injector.cpp" />
+    <ClCompile Include="ProcessInjection.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="Info.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AntiDebug.h" />
     <ClInclude Include="Disk.h" />
     <ClInclude Include="DLL.h" />
+    <ClInclude Include="framework.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="Info.h" />

@@ -1,1 +1,6 @@
-﻿
+﻿  pch.cpp
+  dllmain.cpp
+  MsgDLL.cpp
+  Generating Code...
+     Creating library C:\Users\chase\Desktop\unnamed-framework\src\core\x64\Debug\MSGDLL.lib and object C:\Users\chase\Desktop\unnamed-framework\src\core\x64\Debug\MSGDLL.exp
+  MsgDLL.vcxproj -> C:\Users\chase\Desktop\unnamed-framework\src\core\x64\Debug\MSGDLL.dll

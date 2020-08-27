@@ -3,26 +3,22 @@
 class AntiDebug
 {
 public:
-	bool exitImmediatley;
-
-	AntiDebug(bool exitImmediatley);
-
-	bool CheckAll();
+	static bool CheckAll();
 
 	// github.com/cetfor/AntiDBG
 	//bool CheckBeingDebuggedPEB();
 
-	bool CheckIsDebuggerPresent();
-	bool CheckIsRemoteDebuggerPresent();
-	bool CheckProcessNames(Process* p);
-	bool CheckWindowName();
-	bool CheckHardwareDebugRegisters();
-	bool CheckParentProcess();
-	bool CheckNtGlobalFlag();
-	bool CheckExceptionHandled();
-	bool CheckCloseHandleException();
-	bool CheckDebugString();
-	bool CheckCsrGetProcessId();
+	static bool CheckIsDebuggerPresent();
+	static bool CheckIsRemoteDebuggerPresent();
+	static bool CheckProcessNames(Process* p);
+	static bool CheckWindowName();
+	static bool CheckHardwareDebugRegisters();
+	static bool CheckParentProcess();
+	static bool CheckNtGlobalFlag();
+	static bool CheckExceptionHandled();
+	static bool CheckCloseHandleException();
+	static bool CheckDebugString();
+	static bool CheckCsrGetProcessId();
 
 	/*
 	bool CheckNtQueryInformationProcess();
