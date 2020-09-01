@@ -152,7 +152,8 @@
     <ClCompile Include="AntiDebug.cpp" />
     <ClCompile Include="coremain.cpp" />
     <ClCompile Include="Disk.cpp" />
-    <ClCompile Include="DLL.cpp" />
+    <ClCompile Include="Types.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="ProcessInjection.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Process.cpp" />
@@ -162,8 +163,9 @@
   <ItemGroup>
     <ClInclude Include="AntiDebug.h" />
     <ClInclude Include="Disk.h" />
-    <ClInclude Include="DLL.h" />
+    <ClInclude Include="Types.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="Info.h" />

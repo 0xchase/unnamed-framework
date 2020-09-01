@@ -3,7 +3,8 @@
 #include "AntiDebug.h"
 #include "Utilities.h"
 #include "Info.h"
-#include "DLL.h"
+#include "Types.h"
+
 #pragma once
 
 

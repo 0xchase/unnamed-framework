@@ -1,7 +1,7 @@
 #pragma once
 #include <windows.h>
 #include <string>
-#include "DLL.h"
+#include "Types.h"
 
 // Definitions related to process injection
 #define INJECT_CREATEREMOTETHREAD 0
@@ -35,6 +35,7 @@ public:
 
 	bool InjectDLL(DLL payload);
 	bool InjectDLL(DLL payload, int injectionType);
+	bool InjectShellcode(Shellcode shellcode);
 
 private:
 	bool InjectDll_CreateRemoteThread(DLL payload);
